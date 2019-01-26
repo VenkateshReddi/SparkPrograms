@@ -16,5 +16,7 @@ def main(args: Array[String]): Unit ={
   val rdd_df = rdd.toDF()
   rdd_ds.show()
   rdd_df.show()
+
+  spark.stop()
 }
 }
