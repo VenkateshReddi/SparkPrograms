@@ -38,6 +38,55 @@
 
     </dependencies>
 
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>compile</goal>
+                </goals>
+                <configuration>
+                    <scalaCompatVersion>2.11</scalaCompatVersion>
+                </configuration>
+            </execution>
+        </executions>
+        <configuration>
+            <jvmArgs>
+                <jvmArg>-Xms64m</jvmArg>
+                <jvmArg>-Xmx1024m</jvmArg>
+            </jvmArgs>
+        </configuration>
+    </plugin>
+        <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>2.4.1</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.sparkprograms.examples.TestSpark</mainClass>
+                    </manifest>
+                </archive>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+            </configuration>
+<executions>
+    <execution>
+    <id>make-assembly</id>
+        <phase>package</phase>
+        <goals>
+            <goal>single</goal>
+        </goals>
+    </execution>
+</executions>
+        </plugin>
+    </plugins>
+    </build>
+
 
 
 </project>

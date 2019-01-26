@@ -3,9 +3,10 @@ package com.sparkprograms.examples
 import org.apache.spark.sql.SparkSession
 
 object TestSpark {
-def main(args: Array[String]): Unit ={
-  val spark = SparkSession.builder().appName("TestSpark").master("local[*]").getOrCreate()
-
+  def main(args: Array[String]) {
+  val masterType = args(0).toString
+  //val spark = SparkSession.builder().appName("TestSpark").master("local[*]").getOrCreate()
+  val spark = SparkSession.builder().appName("TestSpark").master(masterType).getOrCreate()
   import spark.implicits._
 
   val ds = spark.createDataset(Seq(1,2,3,4,5))
@@ -18,5 +19,5 @@ def main(args: Array[String]): Unit ={
   rdd_df.show()
 
   spark.stop()
-}
+  }
 }
